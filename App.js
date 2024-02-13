@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useFonts } from "expo-font";
 import * as splashScreen from "expo-splash-screen";
 import { useCallback } from "react";
+import { AppProvider } from "./context/appContext";
 import { CountrySelection, Landing, Login, Register } from "./pages";
 
 const Stack = createNativeStackNavigator();
@@ -35,17 +36,19 @@ export default function App() {
   }
 
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        {unLoggedRoutes.map(({ name, component, headerShown }) => (
-          <Stack.Screen
-            key={name}
-            name={name}
-            component={component}
-            options={{ headerShown: headerShown }}
-          />
-        ))}
-      </Stack.Navigator>
-    </NavigationContainer>
+    <AppProvider>
+      <NavigationContainer>
+        <Stack.Navigator>
+          {unLoggedRoutes.map(({ name, component, headerShown }) => (
+            <Stack.Screen
+              key={name}
+              name={name}
+              component={component}
+              options={{ headerShown: headerShown }}
+            />
+          ))}
+        </Stack.Navigator>
+      </NavigationContainer>
+    </AppProvider>
   );
 }

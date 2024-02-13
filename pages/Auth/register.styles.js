@@ -2,10 +2,14 @@ import { StyleSheet } from "react-native";
 import { COLORS, SIZES } from "../../assets/theme";
 
 const styles = StyleSheet.create({
-  container: {
+  wrapper: {
+    flex: 1,
     marginHorizontal: SIZES.large,
+  },
+  container: {
     marginTop: SIZES.xxLarge,
     flex: 1,
+    position: "relative",
   },
   registerHeader: {
     flexDirection: "row",
