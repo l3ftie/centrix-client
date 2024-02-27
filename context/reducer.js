@@ -1,4 +1,4 @@
-import { CLEAR_ALERT, DISPLAY_ALERT } from "./actions";
+import { CLEAR_ALERT, DISPLAY_ALERT, SELECTED_COUNTRY } from "./actions";
 
 const reducer = (state, action) => {
   // display alert
@@ -10,6 +10,7 @@ const reducer = (state, action) => {
       alertText: "Please provide all values!",
     };
   }
+
   //   clear alert
   if (action.type === CLEAR_ALERT) {
     return {
@@ -17,6 +18,14 @@ const reducer = (state, action) => {
       showAlert: false,
       alertType: "",
       alertText: "",
+    };
+  }
+
+  // selected country code
+  if (action.type === SELECTED_COUNTRY) {
+    return {
+      ...state,
+      country: action.payload.country,
     };
   }
 

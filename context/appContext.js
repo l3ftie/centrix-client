@@ -3,7 +3,7 @@ import { createContext, useContext, useReducer } from "react";
 
 import reducer from "./reducer";
 
-import { CLEAR_ALERT, DISPLAY_ALERT } from "./actions";
+import { CLEAR_ALERT, DISPLAY_ALERT, SELECTED_COUNTRY } from "./actions";
 
 const token = "";
 const user = "";
@@ -68,10 +68,15 @@ const AppProvider = ({ children }) => {
     }, 3000);
   };
 
+  const selectedCountry = (details) => {
+    dispatch({ type: SELECTED_COUNTRY, payload: { country: details.iso } });
+  };
+
   return (
     <AppContext.Provider
       value={{
         ...state,
+        selectedCountry,
         displayAlert,
       }}
     >

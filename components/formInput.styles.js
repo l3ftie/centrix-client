@@ -10,6 +10,14 @@ const styles = StyleSheet.create({
     color: COLORS.primary,
     textTransform: "capitalize",
   },
+  labelText2: {
+    fontSize: SIZES.medium,
+    fontFamily: "bold",
+    marginTop: SIZES.small,
+    color: COLORS.primary,
+    textTransform: "capitalize",
+    marginLeft: -SIZES.xLarge - 5,
+  },
   inputWrapper: {
     gap: 3,
     borderBottomWidth: 1 / 2,

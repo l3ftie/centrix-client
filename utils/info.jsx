@@ -1,0 +1,51 @@
+export const countryInfo = [
+  {
+    id: 1,
+    name: "south africa",
+    iso: "ZA",
+    code: "+27",
+    flagpath: require("../assets/images/south-africa.png"),
+  },
+  {
+    id: 2,
+    name: "united kingdom",
+    iso: "GB",
+    code: "+44",
+    flagpath: require("../assets/images/united-kingdom.png"),
+  },
+  {
+    id: 3,
+    name: "zimbabwe",
+    iso: "ZW",
+    code: "+263",
+    flagpath: require("../assets/images/zimbabwe.png"),
+  },
+  {
+    id: 4,
+    name: "botswana",
+    tag: "BW",
+    code: "+267",
+    flagpath: require("../assets/images/botswana.png"),
+  },
+  {
+    id: 5,
+    name: "canada",
+    iso: "CA",
+    code: "+1",
+    flagpath: require("../assets/images/canada.png"),
+  },
+  {
+    id: 6,
+    name: "australia",
+    iso: "AU",
+    code: "+61",
+    flagpath: require("../assets/images/australia.png"),
+  },
+  {
+    id: 7,
+    name: "United States of America",
+    iso: "US",
+    code: "+1",
+    flagpath: require("../assets/images/united-states.png"),
+  },
+];

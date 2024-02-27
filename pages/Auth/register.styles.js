@@ -53,6 +53,32 @@ const styles = StyleSheet.create({
     fontFamily: "bold",
     fontSize: SIZES.medium,
   },
+  labelText: {
+    fontSize: SIZES.medium,
+    fontFamily: "bold",
+    marginTop: SIZES.small,
+    color: COLORS.primary,
+    textTransform: "capitalize",
+  },
+  datePicker: {
+    borderBottomWidth: 1 / 2,
+    marginBottom: SIZES.small,
+    borderBottomColor: COLORS.gray,
+    height: SIZES.xLarge + 25,
+    justifyContent: "center",
+    // backgroundColor: COLORS.danger,
+  },
+  withPhoneInput: {
+    flexDirection: "row",
+    width: SIZES.width,
+    alignItems: "flex-end",
+  },
+  displayPhone: {
+    borderBottomWidth: 1 / 2,
+    marginBottom: SIZES.small,
+    borderBottomColor: COLORS.gray,
+    marginRight: SIZES.small,
+  },
 });
 
 export default styles;

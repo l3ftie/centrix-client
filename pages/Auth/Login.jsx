@@ -4,43 +4,27 @@ import { Image, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import logo from "../../assets/android/drawable-xxxhdpi/logo.png";
 import { COLORS, SIZES } from "../../assets/theme";
+import { useAppContext } from "../../context/appContext";
+import { countryInfo } from "../../utils/info";
 import styles from "./login.styles";
 
-const options = [
-  {
-    id: 1,
-    name: "south africa",
-    tag: "za",
-    flagpath: require("../../assets/images/south-africa.png"),
-  },
-  {
-    id: 2,
-    name: "united kingdom",
-    tag: "uk",
-    flagpath: require("../../assets/images/united-kingdom.png"),
-  },
-  {
-    id: 3,
-    name: "zimbabwe",
-    tag: "zw",
-    flagpath: require("../../assets/images/zimbabwe.png"),
-  },
-];
-
 const Login = ({ navigation }) => {
-  const [country, setCountry] = useState("zw");
+  const { country } = useAppContext();
+
+  const [countryCode, setCountryCode] = useState(country);
+
   const [displayCountry, setDisplayCountry] = useState("");
 
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
 
   const processCountry = (selectedCountry) => {
-    const tag = options.find((option) => option.tag === selectedCountry);
+    const tag = countryInfo.find((option) => option.iso === selectedCountry);
     setDisplayCountry(tag);
   };
 
   useEffect(() => {
-    processCountry(country);
+    processCountry(countryCode);
   }, []);
 
   return (
@@ -50,26 +34,27 @@ const Login = ({ navigation }) => {
         <View style={styles.wrapper}>
           <View style={styles.inputContainer}>
             <Text style={styles.labelText}>Mobile Number</Text>
-            <View style={styles.inputWrapper}>
-              <Image
-                source={displayCountry.flagpath}
-                style={{ width: 30, height: 30 }}
-              />
+            <View style={[styles.inputWrapper, { alignItems: "center" }]}>
+              <Image source={displayCountry.flagpath} style={{ width: 30, height: 30 }} />
+              <Text style={{ fontSize: SIZES.large, fontFamily: "semibold" }}>
+                {displayCountry.code}
+              </Text>
               <TextInput
                 value={phone}
-                style={styles.textInput}
+                style={[styles.textInput, { fontSize: SIZES.large, fontFamily: "semibold" }]}
                 onChangeText={setPhone}
-                placeholder="eg. 0785404096"
+                keyboardType="phone-pad"
               />
             </View>
 
             <Text style={styles.labelText}>Password</Text>
             <View style={styles.inputWrapper}>
               <TextInput
-                value={phone}
-                style={styles.textInput}
-                onChangeText={setPhone}
+                value={password}
+                style={[styles.textInput, { fontSize: SIZES.large, fontFamily: "semibold" }]}
+                onChangeText={setPassword}
                 placeholder="Enter Password"
+                secureTextEntry
               />
             </View>
             {/* btn section */}
@@ -80,17 +65,11 @@ const Login = ({ navigation }) => {
                 <Text style={styles.btnText}>Sign in</Text>
               </TouchableOpacity>
               <TouchableOpacity style={styles.btnFingerprint}>
-                <Ionicons
-                  name="finger-print-outline"
-                  size={24}
-                  color={COLORS.offwhite}
-                />
+                <Ionicons name="finger-print-outline" size={24} color={COLORS.offwhite} />
               </TouchableOpacity>
             </View>
             <View style={{ alignItems: "center", marginTop: 15 }}>
-              <Text style={{ fontFamily: "bold", fontSize: SIZES.medium }}>
-                Forgot Pin?
-              </Text>
+              <Text style={{ fontFamily: "bold", fontSize: SIZES.medium }}>Forgot Pin?</Text>
             </View>
           </View>
         </View>
@@ -103,9 +82,7 @@ const Login = ({ navigation }) => {
               style={{ marginLeft: 5 }}
               onPress={() => navigation.navigate("Register")}
             >
-              <Text style={{ color: COLORS.primary, fontSize: SIZES.medium }}>
-                Register
-              </Text>
+              <Text style={{ color: COLORS.primary, fontSize: SIZES.medium }}>Register</Text>
             </TouchableOpacity>
           </View>
           <Text>v.1.0.0, Moonlight, All rights reserved </Text>
