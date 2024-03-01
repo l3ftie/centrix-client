@@ -1,4 +1,12 @@
-import { CLEAR_ALERT, DISPLAY_ALERT, SELECTED_COUNTRY } from "./actions";
+import {
+  CLEAR_ALERT,
+  DISPLAY_ALERT,
+  PASSWORD_MATCH,
+  REGISTER_USER_BEGIN,
+  REGISTER_USER_ERROR,
+  REGISTER_USER_SUCCESS,
+  SELECTED_COUNTRY,
+} from "./actions";
 
 const reducer = (state, action) => {
   // display alert
@@ -26,6 +34,42 @@ const reducer = (state, action) => {
     return {
       ...state,
       country: action.payload.country,
+    };
+  }
+
+  if (action.type === PASSWORD_MATCH) {
+    return {
+      ...state,
+      showAlert: true,
+      alertType: "danger",
+      alertText: "Password do not match",
+    };
+  }
+
+  // Register client mobile
+  if (action.type === REGISTER_USER_BEGIN) {
+    return {
+      ...state,
+      isLoading: true,
+    };
+  }
+
+  if (action.type === REGISTER_USER_SUCCESS) {
+    return {
+      ...state,
+      isLoading: false,
+      user: action.payload.user,
+      token: action.payload.token,
+    };
+  }
+
+  if (action.type === REGISTER_USER_ERROR) {
+    return {
+      ...state,
+      isLoading: false,
+      showAlert: true,
+      alertType: "danger",
+      alertText: action.payload.message,
     };
   }
 

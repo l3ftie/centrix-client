@@ -30,9 +30,8 @@ const Register = ({ navigation }) => {
     confirmPassword: "",
   };
 
-  const { showAlert, displayAlert } = useAppContext();
+  const { showAlert, displayAlert, passwordMatching } = useAppContext();
 
-  const [countryCode, setCountryCode] = useState(country);
   const [displayCountry, setDisplayCountry] = useState("");
   const [values, setValues] = useState(initialValues);
   const [countStep, setCountStep] = useState(1);
@@ -41,6 +40,7 @@ const Register = ({ navigation }) => {
   const processCountry = (selectedCountry) => {
     const tag = countryInfo.find((option) => option.iso === selectedCountry);
     setDisplayCountry(tag);
+    setValues({ ...values, country: displayCountry.name });
   };
 
   const processCount = () => {
@@ -71,8 +71,14 @@ const Register = ({ navigation }) => {
   const handleSubmit = () => {
     console.log(values);
     if (values.password !== values.confirmPassword) {
-      // !! to continue here create actions and reducers for alerts
+      passwordMatching();
     }
+
+    if (!values.password || !values.confirmPassword) {
+      displayAlert();
+    }
+
+    // process from data registration
   };
 
   const showDatePicker = () => {
@@ -94,9 +100,8 @@ const Register = ({ navigation }) => {
   };
 
   useEffect(() => {
-    processCountry(countryCode);
-    setValues({ ...values, country: displayCountry.name });
-  }, []);
+    processCountry(country);
+  }, [displayCountry]);
 
   return (
     <View style={styles.wrapper}>

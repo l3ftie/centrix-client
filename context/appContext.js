@@ -3,7 +3,14 @@ import { createContext, useContext, useReducer } from "react";
 
 import reducer from "./reducer";
 
-import { CLEAR_ALERT, DISPLAY_ALERT, SELECTED_COUNTRY } from "./actions";
+import {
+  CLEAR_ALERT,
+  DISPLAY_ALERT,
+  PASSWORD_MATCH,
+  REGISTER_USER_BEGIN,
+  REGISTER_USER_ERROR,
+  SELECTED_COUNTRY,
+} from "./actions";
 
 const token = "";
 const user = "";
@@ -72,12 +79,32 @@ const AppProvider = ({ children }) => {
     dispatch({ type: SELECTED_COUNTRY, payload: { country: details.iso } });
   };
 
+  const passwordMatching = () => {
+    dispatch({ type: PASSWORD_MATCH });
+    clearAlert();
+  };
+
+  const registerClient = async () => {
+    dispatch({ type: REGISTER_USER_BEGIN });
+
+    try {
+    } catch (error) {
+      dispatch({
+        type: REGISTER_USER_ERROR,
+        payload: {
+          message: error,
+        },
+      });
+    }
+  };
+
   return (
     <AppContext.Provider
       value={{
         ...state,
         selectedCountry,
         displayAlert,
+        passwordMatching,
       }}
     >
       {children}
