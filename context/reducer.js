@@ -60,6 +60,7 @@ const reducer = (state, action) => {
       isLoading: false,
       user: action.payload.user,
       token: action.payload.token,
+      otp: action.payload.otp,
     };
   }
 

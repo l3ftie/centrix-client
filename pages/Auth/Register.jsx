@@ -30,7 +30,7 @@ const Register = ({ navigation }) => {
     confirmPassword: "",
   };
 
-  const { showAlert, displayAlert, passwordMatching } = useAppContext();
+  const { isLoading, showAlert, displayAlert, passwordMatching, registerClient } = useAppContext();
 
   const [displayCountry, setDisplayCountry] = useState("");
   const [values, setValues] = useState(initialValues);
@@ -79,6 +79,7 @@ const Register = ({ navigation }) => {
     }
 
     // process from data registration
+    registerClient(values);
   };
 
   const showDatePicker = () => {
@@ -218,10 +219,15 @@ const Register = ({ navigation }) => {
           </View>
           {/*  */}
           <TouchableOpacity
+            disabled={isLoading}
             style={styles.formSubmitBtn}
             onPress={countStep === totalSteps ? handleSubmit : handleProcess}
           >
-            <Text style={styles.submitText}>{countStep === totalSteps ? "Submit" : "Next"}</Text>
+            {isLoading ? (
+              <Text>Please wait loading</Text>
+            ) : (
+              <Text style={styles.submitText}>{countStep === totalSteps ? "Submit" : "Next"}</Text>
+            )}
           </TouchableOpacity>
         </View>
       </ScrollView>
