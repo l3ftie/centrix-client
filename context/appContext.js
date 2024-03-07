@@ -7,6 +7,8 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import {
   CLEAR_ALERT,
   DISPLAY_ALERT,
+  LOGIN_USER_BEGIN,
+  LOGIN_USER_ERROR,
   PASSWORD_MATCH,
   REGISTER_USER_BEGIN,
   REGISTER_USER_ERROR,
@@ -18,9 +20,9 @@ const getallData = async () => {
   const token = await AsyncStorage.getItem("token");
   const user = await AsyncStorage.getItem("user");
   const otp = await AsyncStorage.getItem("otp");
-  console.log("token", token);
-  console.log("user", user);
-  console.log("otp", otp);
+  console.log("token context", token);
+  console.log("user context", user);
+  console.log("otp context", otp);
   return { token, user, otp };
 };
 
@@ -110,6 +112,7 @@ const AppProvider = ({ children }) => {
     clearAlert();
   };
 
+  // register client
   const registerClient = async (currentUser) => {
     dispatch({ type: REGISTER_USER_BEGIN });
 
@@ -140,6 +143,27 @@ const AppProvider = ({ children }) => {
     }
   };
 
+  // login client
+  const loginClient = async (currentUser) => {
+    // dispatch({ type: LOGIN_USER_BEGIN });
+
+    try {
+      const response = await axios.post(
+        "https://centrix-32ep.onrender.com/api/v1/clients/login",
+        currentUser
+      );
+
+      console.log("response from loginClient", data);
+    } catch (error) {
+      dispatch({
+        type: LOGIN_USER_ERROR,
+        payload: {
+          message: error,
+        },
+      });
+    }
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -149,6 +173,7 @@ const AppProvider = ({ children }) => {
         passwordMatching,
         registerClient,
         removeUserToLocalStorage,
+        loginClient,
       }}
     >
       {children}

@@ -1,6 +1,9 @@
 import {
   CLEAR_ALERT,
   DISPLAY_ALERT,
+  LOGIN_USER_BEGIN,
+  LOGIN_USER_ERROR,
+  LOGIN_USER_SUCCESS,
   PASSWORD_MATCH,
   REGISTER_USER_BEGIN,
   REGISTER_USER_ERROR,
@@ -65,6 +68,33 @@ const reducer = (state, action) => {
   }
 
   if (action.type === REGISTER_USER_ERROR) {
+    return {
+      ...state,
+      isLoading: false,
+      showAlert: true,
+      alertType: "danger",
+      alertText: action.payload.message,
+    };
+  }
+
+  // login process for client
+  if (action.type === LOGIN_USER_BEGIN) {
+    return {
+      ...state,
+      isLoading: true,
+    };
+  }
+
+  if (action.type === LOGIN_USER_SUCCESS) {
+    return {
+      ...state,
+      isLoading: false,
+      user: action.payload.user,
+      token: action.payload.token,
+    };
+  }
+
+  if (action.type === LOGIN_USER_ERROR) {
     return {
       ...state,
       isLoading: false,

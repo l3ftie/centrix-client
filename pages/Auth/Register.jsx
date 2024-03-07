@@ -1,7 +1,7 @@
 import { Ionicons } from "@expo/vector-icons";
 import moment from "moment";
 import React, { useEffect, useState } from "react";
-import { Button, ScrollView, Text, TouchableOpacity, View } from "react-native";
+import { ScrollView, Text, TouchableOpacity, View } from "react-native";
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import { COLORS, SIZES } from "../../assets/theme";
 import { AlertModal, FormInput, ProgressBar } from "../../components";

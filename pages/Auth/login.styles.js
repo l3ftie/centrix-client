@@ -2,24 +2,26 @@ import { StyleSheet } from "react-native";
 import { COLORS, SIZES } from "../../assets/theme";
 
 const styles = StyleSheet.create({
-  container: {
+  wrapper: {
     flex: 1,
+    marginHorizontal: SIZES.large,
     marginTop: SIZES.xxLarge,
   },
+  container: {
+    flex: 1,
+    height: SIZES.height,
+    position: "relative",
+  },
   loginContainer: {
-    alignItems: "center",
     marginHorizontal: SIZES.medium,
     justifyContent: "space-between",
+    height: SIZES.height,
     flex: 1,
   },
   logo: {
     width: 80,
     height: 80,
-  },
-  wrapper: {
-    width: "100%",
-    padding: SIZES.medium,
-    borderRadius: SIZES.small,
+    alignSelf: "center",
   },
   inputContainer: {
     backgroundColor: COLORS.white,
