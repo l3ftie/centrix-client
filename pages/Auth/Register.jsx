@@ -43,6 +43,8 @@ const Register = ({ navigation }) => {
     setValues({ ...values, country: displayCountry.name });
   };
 
+  console.log("displayCountry", displayCountry.code);
+
   const processCount = () => {
     if (countStep === 1) return;
     setCountStep(countStep - 1);
@@ -50,6 +52,10 @@ const Register = ({ navigation }) => {
 
   const handleChange = (name, text) => {
     setValues({ ...values, [name]: text });
+  };
+
+  const handlePhoneChange = (name, text) => {
+    // const zeroRemovePhoneNumber =
   };
 
   const handleProcess = () => {
@@ -182,7 +188,7 @@ const Register = ({ navigation }) => {
                       name="phone"
                       keyboardType="number-pad"
                       value={values.phone}
-                      onChangeText={(text) => handleChange("phone", text)}
+                      onChangeText={(text) => handlePhoneChange("phone", text)}
                     />
                   </View>
                 </View>

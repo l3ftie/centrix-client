@@ -4,7 +4,8 @@ import { useFonts } from "expo-font";
 import * as splashScreen from "expo-splash-screen";
 import { useCallback } from "react";
 import { useAppContext } from "../context/appContext";
-import { CountrySelection, Home, Landing, Login, Register } from "../pages";
+import { CountrySelection, Landing, Login, Register } from "../pages";
+import TabbedHome from "../pages/TabbedHome";
 
 const unLoggedRoutes = [
   { name: "Landing", component: Landing, headerShown: false },
@@ -13,7 +14,7 @@ const unLoggedRoutes = [
   { name: "Register", component: Register, headerShown: false },
 ];
 
-const loggedRoutes = [{ name: "Home", component: Home, headerShown: false }];
+const loggedRoutes = [{ name: "Home", component: TabbedHome, headerShown: false }];
 
 const Stack = createNativeStackNavigator();
 

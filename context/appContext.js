@@ -9,6 +9,7 @@ import {
   DISPLAY_ALERT,
   LOGIN_USER_BEGIN,
   LOGIN_USER_ERROR,
+  LOGIN_USER_SUCCESS,
   PASSWORD_MATCH,
   REGISTER_USER_BEGIN,
   REGISTER_USER_ERROR,
@@ -137,31 +138,41 @@ const AppProvider = ({ children }) => {
       dispatch({
         type: REGISTER_USER_ERROR,
         payload: {
-          message: error,
+          message: error.response.data.msg,
         },
       });
     }
+    clearAlert();
   };
 
   // login client
   const loginClient = async (currentUser) => {
-    // dispatch({ type: LOGIN_USER_BEGIN });
+    dispatch({ type: LOGIN_USER_BEGIN });
 
     try {
-      const response = await axios.post(
+      const { data } = await axios.post(
         "https://centrix-32ep.onrender.com/api/v1/clients/login",
         currentUser
       );
+      dispatch({
+        type: LOGIN_USER_SUCCESS,
+        payload: {
+          user: data.client,
+          token: data.token,
+        },
+      });
 
       console.log("response from loginClient", data);
     } catch (error) {
+      console.log(error.response.data.msg);
       dispatch({
         type: LOGIN_USER_ERROR,
         payload: {
-          message: error,
+          message: error.response.data.msg,
         },
       });
     }
+    clearAlert();
   };
 
   return (

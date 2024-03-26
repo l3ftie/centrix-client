@@ -29,6 +29,8 @@ const Login = ({ navigation }) => {
       displayAlert();
     }
     const data = { phone: displayCountry.code + phone, password };
+    console.log(data);
+
     loginClient(data);
   };
 
@@ -71,8 +73,12 @@ const Login = ({ navigation }) => {
             </View>
             <View>
               <View style={styles.btnWrapper}>
-                <TouchableOpacity onPress={handleLogin} style={styles.btnLogin}>
-                  <Text style={styles.btnText}>Sign in</Text>
+                <TouchableOpacity
+                  disabled={isLoading}
+                  onPress={handleLogin}
+                  style={styles.btnLogin}
+                >
+                  <Text style={styles.btnText}>{isLoading ? "Please wait..." : "Sign in"}</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.btnFingerprint}>
                   <Ionicons name="finger-print-outline" size={24} color={COLORS.offwhite} />
