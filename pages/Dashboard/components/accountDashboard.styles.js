@@ -17,8 +17,31 @@ const styles = StyleSheet.create({
     bottom: 0,
     right: 0,
     left: 0,
-    backgroundColor: "rgba(0, 0, 0, 0.5)",
+    backgroundColor: "rgba(0, 0, 0, 0.4)",
   },
+  actionContainer: {
+    paddingHorizontal: SIZES.small,
+    width: "100%",
+    alignSelf: "center",
+    marginTop: -SIZES.xLarge - 10,
+  },
+  innerAction: {
+    flexDirection: "row",
+    justifyContent: "space-evenly",
+    paddingHorizontal: SIZES.small,
+    backgroundColor: COLORS.lightWhite,
+    borderRadius: SIZES.medium,
+    height: 90,
+    alignItems: "center",
+  },
+  actionBtn: {
+    flex: 1,
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  btnSeparatorLast: { borderRightWidth: 0 },
+  btnSeparator: { borderRightWidth: 0.5, borderRightColor: COLORS.primaryDark },
 });
 
 export default styles;

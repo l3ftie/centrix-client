@@ -43,8 +43,6 @@ const Register = ({ navigation }) => {
     setValues({ ...values, country: displayCountry.name });
   };
 
-  console.log("displayCountry", displayCountry.code);
-
   const processCount = () => {
     if (countStep === 1) return;
     setCountStep(countStep - 1);
@@ -55,7 +53,17 @@ const Register = ({ navigation }) => {
   };
 
   const handlePhoneChange = (name, text) => {
-    // const zeroRemovePhoneNumber =
+    const phoneNumber = text;
+
+    const formattedPhoneNumber = phoneNumber.startsWith("0")
+      ? phoneNumber.substring(1)
+      : phoneNumber;
+
+    if (values.phone === formattedPhoneNumber) {
+      return;
+    }
+
+    setValues({ ...values, [name]: formattedPhoneNumber });
   };
 
   const handleProcess = () => {
@@ -85,7 +93,12 @@ const Register = ({ navigation }) => {
     }
 
     // process from data registration
-    registerClient(values);
+    const payload = {
+      ...values,
+      phone: displayCountry.code + values.phone,
+    };
+
+    registerClient(payload);
   };
 
   const showDatePicker = () => {

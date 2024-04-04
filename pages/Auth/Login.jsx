@@ -101,7 +101,7 @@ const Login = ({ navigation }) => {
                 <Text style={{ color: COLORS.primary, fontSize: SIZES.medium }}>Register</Text>
               </TouchableOpacity>
             </View>
-            <Text>v.1.0.0, Moonlight, All rights reserved </Text>
+            <Text style={{ alignSelf: "center" }}>v.1.0.1, Moonlight, All rights reserved </Text>
           </View>
         </View>
         {showAlert && <AlertModal />}

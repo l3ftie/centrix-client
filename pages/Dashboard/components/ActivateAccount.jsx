@@ -15,7 +15,7 @@ const ActivateAccount = () => {
         {!idVerification && (
           <Text style={{ color: COLORS.lightWhite }}>
             Your KYC details are being verified. It won’t take long, we will let you know once its
-            you have been verified.
+            you have been verified...
           </Text>
         )}
       </View>

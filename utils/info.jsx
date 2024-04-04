@@ -1,3 +1,5 @@
+import { FontAwesome, Ionicons, MaterialIcons } from "@expo/vector-icons";
+
 export const countryInfo = [
   {
     id: 1,
@@ -83,5 +85,67 @@ export const planType = [
     casketType:
       "https://i0.wp.com/in-valhalla.com/wp-content/uploads/2020/11/OrionBlack_A_1024x10242x-edited.png?resize=768%2C480&ssl=1",
     busBenefit: "Full services",
+  },
+];
+
+export const actions = [
+  {
+    id: 1,
+    name: "Payment",
+    to: "",
+    icon: <MaterialIcons name="payment" size={24} color="black" />,
+  },
+  {
+    id: 2,
+    name: "Account",
+    to: "",
+    icon: <Ionicons name="person-circle-outline" size={24} color="black" />,
+  },
+  {
+    id: 4,
+    name: "Claim",
+    to: "",
+    icon: <FontAwesome name="wpforms" size={24} color="black" />,
+  },
+  {
+    id: 3,
+    name: "Beneficiary",
+    to: "",
+    icon: <Ionicons name="person-add-outline" size={24} color="black" />,
+  },
+];
+
+export const recentActivities = [
+  {
+    id: 1,
+    activityType: "payment",
+    title: "Policy Payment",
+    time: new Date(),
+    amount: 34,
+    desc: "Policy payment",
+  },
+  {
+    id: 2,
+    activityType: "claim",
+    title: "Claim Submission",
+    time: new Date(),
+    amount: 400,
+    desc: "Claim submission",
+  },
+  {
+    id: 3,
+    activityType: "payment",
+    title: "Policy Payment",
+    time: new Date(),
+    amount: 40,
+    desc: "Policy payment",
+  },
+  {
+    id: 4,
+    activityType: "payment",
+    title: "Policy Payment",
+    time: new Date(),
+    amount: 50,
+    desc: "Policy payment",
   },
 ];

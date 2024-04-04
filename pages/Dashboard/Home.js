@@ -3,15 +3,16 @@ import { SIZES } from "../../assets/theme";
 import { useAppContext } from "../../context/appContext";
 import AccountDashboard from "./components/AccountDashboard";
 import ActivateAccount from "./components/ActivateAccount";
-import HeaderBar from "./components/HeaderBar";
 
 const Home = () => {
   const { user } = useAppContext();
   const { planState } = user;
 
+  console.log(planState);
+
   return (
     <SafeAreaView style={{ padding: SIZES.medium }}>
-      {!planState ? <ActivateAccount /> : <AccountDashboard user={user} />}
+      {planState ? <ActivateAccount /> : <AccountDashboard user={user} />}
     </SafeAreaView>
   );
 };
