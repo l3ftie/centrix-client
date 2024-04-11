@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: SIZES.small,
     backgroundColor: COLORS.lightWhite,
     borderRadius: SIZES.medium,
-    height: 90,
+    height: 100,
     alignItems: "center",
   },
   actionBtn: {
@@ -39,6 +39,11 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
+  },
+  actionBtnIcon: {
+    backgroundColor: COLORS.lightPrimary,
+    padding: SIZES.medium,
+    borderRadius: SIZES.xLarge + 20,
   },
   btnSeparatorLast: { borderRightWidth: 0 },
   btnSeparator: { borderRightWidth: 0.5, borderRightColor: COLORS.primaryDark },

@@ -1,4 +1,5 @@
-import { FontAwesome, Ionicons, MaterialIcons } from "@expo/vector-icons";
+import { AntDesign, FontAwesome, Ionicons, MaterialIcons } from "@expo/vector-icons";
+import { COLORS } from "../assets/theme";
 
 export const countryInfo = [
   {
@@ -93,25 +94,25 @@ export const actions = [
     id: 1,
     name: "Payment",
     to: "",
-    icon: <MaterialIcons name="payment" size={24} color="black" />,
+    icon: <AntDesign name="creditcard" size={24} color={COLORS.primaryBlue} />,
   },
   {
     id: 2,
     name: "Account",
     to: "",
-    icon: <Ionicons name="person-circle-outline" size={24} color="black" />,
-  },
-  {
-    id: 4,
-    name: "Claim",
-    to: "",
-    icon: <FontAwesome name="wpforms" size={24} color="black" />,
+    icon: <AntDesign name="idcard" size={24} color={COLORS.primaryBlue} />,
   },
   {
     id: 3,
     name: "Beneficiary",
     to: "",
-    icon: <Ionicons name="person-add-outline" size={24} color="black" />,
+    icon: <AntDesign name="addusergroup" size={24} color={COLORS.primaryBlue} />,
+  },
+  {
+    id: 4,
+    name: "Claim",
+    to: "",
+    icon: <AntDesign name="addfile" size={24} color={COLORS.primaryBlue} />,
   },
 ];
 

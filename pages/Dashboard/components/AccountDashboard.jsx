@@ -47,15 +47,18 @@ const AccountDashboard = () => {
             numColumns={4}
             renderItem={({ item, index }) => {
               return (
-                <TouchableOpacity
-                  style={[
-                    styles.actionBtn,
-                    index === actions.length - 1 ? styles.btnSeparatorLast : styles.btnSeparator,
-                  ]}
-                  key={item.id}
-                >
-                  {item.icon}
-                  <Text>{item.name}</Text>
+                <TouchableOpacity style={styles.actionBtn} key={item.id}>
+                  <View style={styles.actionBtnIcon}>{item.icon}</View>
+                  <Text
+                    style={{
+                      fontFamily: "bold",
+                      color: COLORS.primaryBlue,
+                      fontSize: SIZES.small,
+                      marginTop: SIZES.xSmall - 5,
+                    }}
+                  >
+                    {item.name}
+                  </Text>
                 </TouchableOpacity>
               );
             }}
