@@ -1,7 +1,7 @@
 import { Ionicons } from "@expo/vector-icons";
 import React, { useEffect, useState } from "react";
 import { Image, ScrollView, Text, TextInput, TouchableOpacity, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+
 import logo from "../../assets/android/drawable-xxxhdpi/logo.png";
 import { COLORS, SIZES } from "../../assets/theme";
 import { AlertModal } from "../../components";

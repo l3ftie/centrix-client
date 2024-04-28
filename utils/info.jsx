@@ -93,25 +93,25 @@ export const actions = [
   {
     id: 1,
     name: "Payment",
-    to: "",
+    to: "Payment",
     icon: <AntDesign name="creditcard" size={24} color={COLORS.primaryBlue} />,
   },
   {
     id: 2,
     name: "Account",
-    to: "",
+    to: "Payment",
     icon: <AntDesign name="idcard" size={24} color={COLORS.primaryBlue} />,
   },
   {
     id: 3,
     name: "Beneficiary",
-    to: "",
+    to: "Payment",
     icon: <AntDesign name="addusergroup" size={24} color={COLORS.primaryBlue} />,
   },
   {
     id: 4,
     name: "Claim",
-    to: "",
+    to: "Payment",
     icon: <AntDesign name="addfile" size={24} color={COLORS.primaryBlue} />,
   },
 ];
@@ -148,5 +148,35 @@ export const recentActivities = [
     time: new Date(),
     amount: 50,
     desc: "Policy payment",
+  },
+];
+
+export const coversList = [
+  {
+    id: 1,
+    name: "traditional",
+    price: 400,
+    description: "Traditional funeral cover plan that accommodate",
+    relationShip: false,
+    casketType: "Standard wood casket",
+    busBenefit: "Limited to one 15 seater bus",
+  },
+  {
+    id: 2,
+    name: "classical",
+    price: 850,
+    description: "classical funeral cover plan that accommodate",
+    relationShip: true,
+    casketType: "Standard wood casket",
+    busBenefit: "Limited to one 21 seater bus",
+  },
+  {
+    id: 3,
+    name: "executive",
+    price: 1400,
+    description: "Executive funeral cover plan that accommodate",
+    relationShip: true,
+    casketType: "Executive wood casket",
+    busBenefit: "Limited to one 35 seater bus",
   },
 ];

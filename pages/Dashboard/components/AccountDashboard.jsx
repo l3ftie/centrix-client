@@ -1,20 +1,26 @@
 import React from "react";
-import { FlatList, ImageBackground, ScrollView, Text, TouchableOpacity, View } from "react-native";
+import { FlatList, ImageBackground, Text, TouchableOpacity, View } from "react-native";
 
+import { useNavigation } from "@react-navigation/native";
 import moment from "moment";
 import heroImage from "../../../assets/images/family-together.jpg";
 import { COLORS, SIZES } from "../../../assets/theme";
 import { useAppContext } from "../../../context/appContext";
 import getGreetingTextTime from "../../../utils/greetings";
 import { actions, recentActivities } from "../../../utils/info";
-import AccountCardDetails from "./AccountCardDetails";
 import HeaderBar from "./HeaderBar";
 import styles from "./accountDashboard.styles";
 
 const AccountDashboard = () => {
   const { user } = useAppContext();
+  const navigation = useNavigation();
+
+  const handleNavigate = (to) => {
+    navigation.navigate(to);
+  };
 
   const { firstName } = user;
+
   return (
     <View style={{ height: SIZES.height, paddingBottom: SIZES.xLarge + 50 }}>
       <HeaderBar noText={true} />
@@ -47,7 +53,11 @@ const AccountDashboard = () => {
             numColumns={4}
             renderItem={({ item, index }) => {
               return (
-                <TouchableOpacity style={styles.actionBtn} key={item.id}>
+                <TouchableOpacity
+                  style={styles.actionBtn}
+                  onPress={() => handleNavigate(item.to)}
+                  key={item.id}
+                >
                   <View style={styles.actionBtnIcon}>{item.icon}</View>
                   <Text
                     style={{

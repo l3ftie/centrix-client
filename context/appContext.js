@@ -15,6 +15,8 @@ import {
   REGISTER_USER_ERROR,
   REGISTER_USER_SUCCESS,
   SELECTED_COUNTRY,
+  SELECTED_COVER_BEGIN,
+  SELECTED_COVER_ERROR,
 } from "./actions";
 
 const getallData = async () => {
@@ -45,6 +47,7 @@ const initialState = {
   applicationTypeOptions: ["new application", "upgrade", "downgrade", "additional information"],
   applicationType: "new application",
   otp: otp || null,
+  currentCover: null,
 };
 
 const AppContext = createContext();
@@ -175,6 +178,25 @@ const AppProvider = ({ children }) => {
     clearAlert();
   };
 
+  const getCoverDesc = async (cover) => {
+    // dispatch({ type: SELECTED_COVER_BEGIN });
+    try {
+      const { data } = await axios.get(
+        `https://centrix-32ep.onrender.com/api/v1/clients/login`,
+        {}
+      );
+    } catch (error) {
+      console.log(error.response.data.msg);
+      dispatch({
+        type: SELECTED_COVER_ERROR,
+        payload: {
+          message: error.response.data.msg,
+        },
+      });
+    }
+    clearAlert();
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -185,6 +207,7 @@ const AppProvider = ({ children }) => {
         registerClient,
         removeUserToLocalStorage,
         loginClient,
+        getCoverDesc,
       }}
     >
       {children}

@@ -1,3 +1,4 @@
+import { isLoading } from "expo-font";
 import {
   CLEAR_ALERT,
   DISPLAY_ALERT,
@@ -9,6 +10,9 @@ import {
   REGISTER_USER_ERROR,
   REGISTER_USER_SUCCESS,
   SELECTED_COUNTRY,
+  SELECTED_COVER_BEGIN,
+  SELECTED_COVER_ERROR,
+  SELECTED_COVER_SUCCESS,
 } from "./actions";
 
 const reducer = (state, action) => {
@@ -95,6 +99,31 @@ const reducer = (state, action) => {
   }
 
   if (action.type === LOGIN_USER_ERROR) {
+    return {
+      ...state,
+      isLoading: false,
+      showAlert: true,
+      alertType: "danger",
+      alertText: action.payload.message,
+    };
+  }
+
+  if (action.type === SELECTED_COVER_BEGIN) {
+    return {
+      ...state,
+      isLoading: true,
+    };
+  }
+
+  if (action.type === SELECTED_COVER_SUCCESS) {
+    return {
+      ...state,
+      isLoading: false,
+      currentCover: action.payload.coverDetails,
+    };
+  }
+
+  if (action.type === SELECTED_COVER_ERROR) {
     return {
       ...state,
       isLoading: false,

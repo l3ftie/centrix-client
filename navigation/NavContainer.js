@@ -5,6 +5,7 @@ import * as splashScreen from "expo-splash-screen";
 import { useCallback } from "react";
 import { useAppContext } from "../context/appContext";
 import { CountrySelection, Landing, Login, Register } from "../pages";
+import Payment from "../pages/Payment/Payment";
 import TabbedHome from "../pages/TabbedHome";
 
 const unLoggedRoutes = [
@@ -14,7 +15,10 @@ const unLoggedRoutes = [
   { name: "Register", component: Register, headerShown: false },
 ];
 
-const loggedRoutes = [{ name: "Home", component: TabbedHome, headerShown: false }];
+const loggedRoutes = [
+  { name: "Home", component: TabbedHome, headerShown: false },
+  { name: "Payment", component: Payment, headerShown: false },
+];
 
 const Stack = createNativeStackNavigator();
 
